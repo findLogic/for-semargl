@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <NavigationMenu />
-      <div style={{ margin: '20px 0', flexGrow: '1' }}>{children}</div>
+      <div className="ui container" style={{ margin: '20px 0', flexGrow: '1' }}>
+        {children}
+      </div>
       <FooterBlock />
     </>
   );

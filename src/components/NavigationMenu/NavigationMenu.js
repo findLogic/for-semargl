@@ -1,19 +1,25 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const NavigationMenu = () => {
   return (
     <>
       <div className="ui secondary pointing menu">
-        <a className="active item">Home</a>
-        <a className="item">Messages</a>
-        <a className="item">Friends</a>
+        <NavLink to="/" exact activeClassName="active" className="item">
+          Home
+        </NavLink>
+        <NavLink to="/profile" exact className="item">
+          Profile
+        </NavLink>
+        <NavLink to="/news" exact className="item">
+          News
+        </NavLink>
         <div className="right menu">
-          <a className="ui item">Logout</a>
+          <NavLink to="/" className="ui item">
+            Logout
+          </NavLink>
         </div>
       </div>
-      {/* <div className="ui segment">
-        <p></p>
-      </div> */}
     </>
   );
 };
