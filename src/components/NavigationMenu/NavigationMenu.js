@@ -1,11 +1,29 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signOut } from '../../actions/';
 
-const NavigationMenu = () => {
+const NavigationMenu = ({ user, signOut }) => {
+  const renderLoginLogout = () => {
+    if (user.user) {
+      return (
+        <Link onClick={signOut} to="/" className="ui item">
+          Logout
+        </Link>
+      );
+    } else {
+      return (
+        <NavLink to="/login" className="ui item">
+          Login
+        </NavLink>
+      );
+    }
+  };
+
   return (
     <>
       <div className="ui secondary pointing menu">
-        <NavLink to="/" exact activeClassName="active" className="item">
+        <NavLink to="/" exact className="item">
           Home
         </NavLink>
         <NavLink to="/profile" exact className="item">
@@ -14,14 +32,14 @@ const NavigationMenu = () => {
         <NavLink to="/news" exact className="item">
           News
         </NavLink>
-        <div className="right menu">
-          <NavLink to="/" className="ui item">
-            Logout
-          </NavLink>
-        </div>
+        <div className="right menu">{renderLoginLogout()}</div>
       </div>
     </>
   );
 };
 
-export default NavigationMenu;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, { signOut })(NavigationMenu);

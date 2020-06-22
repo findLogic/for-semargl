@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import MainPage from '../Pages/MainPage/MainPage';
 import Layout from '../../hoc/Layout';
@@ -6,8 +6,14 @@ import LoginPage from '../Pages/LoginPage/LoginPage';
 import NewsPage from '../Pages/NewsPage/NewsPage';
 import ProfilePage from '../Pages/ProfilePage/ProfilePage';
 import './App.scss';
+import { connect } from 'react-redux';
+import { checkLocalStorage } from '../../actions/';
 
-const App = () => {
+const App = ({ checkLocalStorage }) => {
+  useEffect(() => {
+    checkLocalStorage();
+  }, []);
+
   const routes = (
     <Switch>
       <Route path="/" exact component={MainPage} />
@@ -22,4 +28,4 @@ const App = () => {
   return <Layout>{routes}</Layout>;
 };
 
-export default App;
+export default connect(null, { checkLocalStorage })(App);
