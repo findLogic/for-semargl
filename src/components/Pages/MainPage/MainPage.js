@@ -6,7 +6,7 @@ import PostsList from '../../PostsList/PostsList';
 const MainPage = ({ posts, fetchPosts }) => {
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   return (
     <div>

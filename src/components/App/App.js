@@ -12,7 +12,7 @@ import { checkLocalStorage } from '../../actions/';
 const App = ({ checkLocalStorage }) => {
   useEffect(() => {
     checkLocalStorage();
-  }, []);
+  }, [checkLocalStorage]);
 
   const routes = (
     <Switch>

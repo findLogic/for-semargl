@@ -6,7 +6,7 @@ import { fetchNews } from '../../../actions/';
 const NewsPage = ({ news, fetchNews }) => {
   useEffect(() => {
     fetchNews();
-  }, []);
+  }, [fetchNews]);
 
   return (
     <>
